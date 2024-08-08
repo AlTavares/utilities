@@ -2,9 +2,8 @@ import { Command } from "commander"
 import { consola } from "consola"
 
 export namespace CLI {
-    export function create(handler: (cli: Command) => void): Command {
+    export async function create(handler: (cli: Command) => void): Promise<Command> {
         const command = new Command()
-
         command
             .helpCommand(true)
             .allowExcessArguments(false)
