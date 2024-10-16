@@ -1,6 +1,7 @@
 import consola from "consola"
+import process from "node:process"
 
-export class EnvironmentVariable<T> {
+export class EnvironmentVariable<T = string> {
     constructor(public name: string) {
         this.name = name
     }
@@ -25,5 +26,3 @@ export class EnvironmentVariable<T> {
         return value
     }
 }
-
-

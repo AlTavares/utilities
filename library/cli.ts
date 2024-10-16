@@ -1,8 +1,9 @@
 import { Command } from "commander"
 import { consola } from "consola"
+import process from "node:process"
 
-export namespace CLI {
-    export async function create(handler: (cli: Command) => void): Promise<Command> {
+export class CLI {
+    static async create(handler: (cli: Command) => Promise<void>): Promise<Command> {
         const command = new Command()
         command
             .helpCommand(true)
@@ -27,7 +28,7 @@ export namespace CLI {
             process.exit(1)
         })
 
-        handler(command)
+        await handler(command)
         return command
     }
 }
